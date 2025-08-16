@@ -26,7 +26,7 @@
         android:text="Your Order has been\nPlaced Successfully!"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="32dp" />

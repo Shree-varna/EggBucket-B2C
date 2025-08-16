@@ -89,7 +89,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="30dp"
             android:text="Eggs (Pack of 12)"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
