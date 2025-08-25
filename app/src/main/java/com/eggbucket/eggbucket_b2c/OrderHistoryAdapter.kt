@@ -77,7 +77,9 @@ class OrderHistoryAdapter(private val orderList: List<OrderItem>) :
         holder.items.text = itemStringBuilder.toString().trim()
 
         // Show order ID and status
-        holder.deliveryStatus.text = "Order ID: ${order.id}\nStatus: ${order.status}"
+        val shortId = if (order.id.length >= 3) order.id.takeLast(3) else order.id
+        holder.deliveryStatus.text = "Order ID: $shortId\nStatus: ${order.status}"
+
 
         // Enable or disable Cancel button
         if (getTimeDifference(

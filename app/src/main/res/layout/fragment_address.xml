@@ -34,14 +34,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/BuyAgainRecyclerView"
-            android:layout_width="417dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/progressBar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/add_New_Address" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12"
-            app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/activity_address_list" />
 
         <ImageView
@@ -55,17 +53,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/add_New_Address"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="#FF8C22"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
             android:text="Add New Address"
-            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/orange"
+            app:cornerRadius="12dp"
+            app:iconGravity="textStart"
+            app:iconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ProgressBar

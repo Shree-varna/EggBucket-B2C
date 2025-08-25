@@ -1,119 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="95dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="0dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textViewFlatNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/edit_address"
+            tools:text="A-123, Sunshine Apartments" />
 
-            <LinearLayout
-                android:id="@+id/add_Address"
-                android:layout_marginStart="15dp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/delete_container"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:background="@color/white">
+        <TextView
+            android:id="@+id/textViewAddressLine1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewFlatNo"
+            app:layout_constraintEnd_toStartOf="@+id/edit_address"
+            tools:text="123, Main Street" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="10dp"
-                    app:srcCompat="@drawable/group_75902" />
+        <TextView
+            android:id="@+id/textViewAreaCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:background="@color/white">
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewAddressLine1"
+            app:layout_constraintEnd_toStartOf="@+id/edit_address"
+            tools:text="Basavanagudi, Bengaluru" />
 
-                    <TextView
-                        android:id="@+id/buyAgainBookName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="sans-serif"
-                        android:text="Building Name"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/textViewStateZipCountry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewAreaCity"
+            app:layout_constraintEnd_toStartOf="@+id/edit_address"
+            tools:text="Karnataka - 560050, India" />
 
-                    <TextView
-                        android:id="@+id/buyAgainBookPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-condensed-medium"
-                        android:text="Location"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-                </LinearLayout>
-            </LinearLayout>
+        <ImageView
+            android:id="@+id/edit_address"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/union_1"
+            app:layout_constraintEnd_toStartOf="@+id/delete_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <LinearLayout
-                android:id="@+id/delete_container"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginEnd="20dp"
-                android:background="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+        <ImageView
+            android:id="@+id/delete_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/group_75903"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <ImageView
-                    android:id="@+id/edit_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="10dp"
-                    app:srcCompat="@drawable/union_1" />
-                <ImageView
-                    android:id="@+id/delete_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="37dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="0dp"
-                    app:srcCompat="@drawable/group_75903" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Divider line below the CardView -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#DADADA"
-        app:layout_constraintTop_toBottomOf="@id/cardView2" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

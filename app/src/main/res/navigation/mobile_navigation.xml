@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_navigation_notifications_to_editProfile"
             app:destination="@id/editProfile" />
+        <action
+            android:id="@+id/action_navigation_notifications_to_notificationF"
+            app:destination="@id/notificationF" />
         <argument
             android:name="firstName"
             app:argType="string" />
@@ -211,5 +214,9 @@
         android:id="@+id/viewOrdersFragment"
         android:label="View Orders"
         tools:layout="@layout/fragment_view_order" />
+    <fragment
+        android:id="@+id/notificationF"
+        android:name="com.eggbucket.eggbucket_b2c.WhatsappNotificationFragment"
+        android:label="Whatsapp Notification"/>
 
 </navigation>

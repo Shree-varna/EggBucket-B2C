@@ -83,7 +83,7 @@ class Product1Fragment : Fragment() {
     }
 
     private fun updatePrice(view: View) {
-        val priceTextView = view.findViewById<TextView>(R.id.productprize3)
+        val priceTextView = view.findViewById<TextView>(R.id.productprize)
         val priceSectionTextView = view.findViewById<TextView>(R.id.priceText)
         val totalPrice = dynamicPrice * count2
         val formattedPrice = "₹${"%.2f".format(totalPrice)}"

@@ -1,105 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:id="@+id/loginWithOtp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginWithOtp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#FFFFFF"
-    android:padding="24dp">
+    android:background="@android:color/white"
+    tools:context=".uiscreens.LoginWithOtpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:padding="24dp">
 
-        <!-- Logo -->
+        <!-- App Logo -->
         <ImageView
-            android:id="@+id/logoImage"
+            android:id="@+id/appLogo"
             android:layout_width="200dp"
-            android:layout_height="154dp"
-            android:src="@drawable/logo" />
+            android:layout_height="120dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/logo"
+            android:contentDescription="App Logo"
+            android:alpha="0"
+            android:scaleX="0.7"
+            android:scaleY="0.7" />
 
-        <!-- Tagline -->
-
-        <!-- Login Label -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-1dp"
-            android:text="“Think of an Egg, Think of EggBucket!”"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
+        <!-- Login Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loginCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="14dp"
-            android:paddingEnd="16dp">
+            android:layout_marginTop="40dp"
+            android:elevation="8dp"
+            android:backgroundTint="#FFFFFF"
+            app:cardCornerRadius="20dp">
 
-            <!-- Login Account Text -->
-            <TextView
-                android:id="@+id/loginTitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
 
-                android:text="Login Account"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <!-- Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center" />
 
-            <!-- User Profile Icon -->
-            <ImageView
-                android:id="@+id/profileIcon"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="8dp"
-                android:contentDescription="Profile Icon"
-                android:src="@drawable/baseline_person_24" />
-        </LinearLayout>
+                <!-- Phone Input -->
+                <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Phone Number"
+                    android:inputType="phone"
+                    android:background="@drawable/edt_background"
+                    android:padding="12dp"
+                    android:layout_marginTop="20dp" />
 
+                <!-- Login Button -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSendOtp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Send OTP"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/login_sendotp_back"
+                    android:elevation="4dp"
+                    android:enabled="true"
+                    android:layout_marginTop="20dp" />
 
-        <!-- Phone Number Input -->
-        <EditText
-            android:id="@+id/etPhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Enter Phone Number"
-            android:inputType="phone"
-            android:layout_marginTop="18dp"
-            android:padding="12dp"
-            android:background="@drawable/edt_background" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <!-- Send OTP Button -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSendOtp"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Send OTP"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/login_sendotp_back"
-            android:elevation="4dp"
-            android:enabled="true"
-            android:layout_marginTop="30dp" />
-
-
-
+        <!-- Progress Bar (placed at bottom but can float with FrameLayout if needed) -->
         <ProgressBar
-            android:id="@+id/loginprogressBar"
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:visibility="gone"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center" />
-
-
-
-
+            android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
 </ScrollView>

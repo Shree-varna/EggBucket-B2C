@@ -55,11 +55,13 @@
             android:exported="false" />
         <activity
             android:name=".uiscreens.LoginWithOtpActivity"
+            android:windowSoftInputMode="adjustResize"
+
             android:exported="false" />
         <activity
             android:name=".uiscreens.OtpVerificationActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize|stateVisible" />
         <activity
             android:name=".BottomNavigation.ui.BottomNavigationScreen"
             android:exported="true" /> <!-- <activity -->

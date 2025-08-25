@@ -7,6 +7,7 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
@@ -53,9 +54,17 @@ class OtpVerificationActivity : AppCompatActivity() {
         binding = ActivityOtpVerificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.otpPinView.requestFocus()
-        binding.otpPinView.setAnimationEnable(true)
-        binding.otpPinView.animate()
+        val slideInTop = AnimationUtils.loadAnimation(this, R.anim.slide_in_top)
+        val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        val zoomIn = AnimationUtils.loadAnimation(this, R.anim.zoom_in)
+        val slideInBottom = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom)
+
+        // 🔹 Start animations on views
+        binding.tvOtpTitle.startAnimation(slideInTop)        // Title slides in
+        binding.tvOtpSubtitle.startAnimation(fadeIn)         // Subtitle fades in
+        binding.otpPinView.startAnimation(zoomIn)          // OTP boxes zoom in
+        binding.btnVerifyOtp.startAnimation(slideInBottom)   // Verify button slides up
+        binding.tvResendOtp.startAnimation(fadeIn)           // Resend fades in
 
         val backArrow = findViewById<ImageView>(R.id.imageView4)
         backArrow.setOnClickListener {
@@ -81,7 +90,7 @@ class OtpVerificationActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 Log.d("pinview4", "On text changed: $s")
-                binding.verifyButton.isEnabled = s?.length == 6
+                binding.btnVerifyOtp.isEnabled = s?.length == 6
                 if (s.toString().length == 6) {
                     Toast.makeText(this@OtpVerificationActivity, "Verifying...", Toast.LENGTH_SHORT).show()
                 }
@@ -105,7 +114,7 @@ class OtpVerificationActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         verificationId = intent.getStringExtra("verificationId")
         phoneNumber = intent.getStringExtra("phoneNumber")
-        binding.textView4.text = "Enter the code from the SMS we sent to " + phoneNumber
+        binding.tvOtpSubtitle.text = "Enter the code from the SMS we sent to " + phoneNumber
     }
 
     private fun verifyCode(code: String) {

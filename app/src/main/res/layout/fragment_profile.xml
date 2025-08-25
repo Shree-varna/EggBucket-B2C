@@ -198,7 +198,7 @@
                    android:background="@color/white"
                    android:clickable="true"
                    android:focusable="true"
-                   android:id="@+id/editProfileLayout_2"
+                   android:id="@+id/notification"
                    >
                    <androidx.cardview.widget.CardView
 

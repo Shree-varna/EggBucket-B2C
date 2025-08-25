@@ -80,4 +80,8 @@ dependencies {
     implementation ("org.osmdroid:osmdroid-android:6.1.10")
     implementation ("com.google.android.gms:play-services-location:21.0.1")
     implementation ("com.google.firebase:firebase-messaging:23.0.5")
+    implementation("nl.dionsegijn:konfetti-xml:2.0.4")
+    implementation("nl.dionsegijn:konfetti-core:2.0.4")
+
+
 }

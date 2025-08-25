@@ -18,7 +18,6 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var sharedPref: SharedPreferences
     private lateinit var number: SharedPreferences
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,6 +54,12 @@ class ProfileFragment : Fragment() {
         // Navigate to Edit Profile Fragment
         binding.editProfileLayout.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_notifications_to_editProfile)
+        }
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.notification.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_notifications_to_notificationF)
         }
 
         // Handle Logout

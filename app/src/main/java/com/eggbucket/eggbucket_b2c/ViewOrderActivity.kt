@@ -35,8 +35,10 @@ class ViewOrderActivity : AppCompatActivity() {
     private lateinit var buildingNameTextView: TextView
     private lateinit var locationNameTextView: TextView
     private lateinit var itemsContainerLayout: LinearLayout
-    private lateinit var totalPriceTextView: TextView
     private lateinit var backButton: ImageView
+    private lateinit var subtotalTextView: TextView
+    private lateinit var deliveryTextView: TextView
+    private lateinit var grandTotalTextView: TextView
     private lateinit var deliveryPartnerNameTextView: TextView
     private lateinit var orderNoteTextView: TextView
     private lateinit var thankYouButton: Button
@@ -69,9 +71,11 @@ class ViewOrderActivity : AppCompatActivity() {
         buildingNameTextView = findViewById(R.id.buildingName)
         locationNameTextView = findViewById(R.id.locationName)
         itemsContainerLayout = findViewById(R.id.itemsContainer)
-        totalPriceTextView = findViewById(R.id.totalPrice)
         backButton = findViewById(R.id.backButton)
-        deliveryPartnerNameTextView = findViewById(R.id.deliveryLabel)
+        subtotalTextView = findViewById(R.id.subtotalPrice)
+        deliveryTextView = findViewById(R.id.deliveryPrice)
+        grandTotalTextView = findViewById(R.id.grandTotalPrice)
+        deliveryPartnerNameTextView = findViewById(R.id.deliveryPartnerName)
         orderNoteTextView = findViewById(R.id.orderNote)
         thankYouButton = findViewById(R.id.thankYouBtn)
 
@@ -111,7 +115,7 @@ class ViewOrderActivity : AppCompatActivity() {
             setPadding(0, 16, 0, 0)
         }
         itemsContainerLayout.addView(loadingTextView)
-        totalPriceTextView.text = "Total: Calculating..."
+        subtotalTextView.text = "Total: Calculating..."
         buildingNameTextView.text = "   Loading address..."
         locationNameTextView.text = "   "
     }
@@ -204,6 +208,8 @@ class ViewOrderActivity : AppCompatActivity() {
      * It now uses the globally available 'productPriceMap'.
      */
     private fun displayOrderDetails(order: OrderItem) {
+        val orderNumber = order.id.substringAfterLast("-")
+        orderNoteTextView.text = "Order #$orderNumber"
         // --- Display Address Details ---
         // Retrieve the saved address JSON string from SharedPreferences
         val addressJson = sharedPreferences.getString("selected_address", null)
@@ -294,15 +300,16 @@ class ViewOrderActivity : AppCompatActivity() {
         }
 
         // --- Display Total Price ---
-        // Use the total from the order object, as it should be the authoritative total from the backend
-        totalPriceTextView.text = "Total: ₹${String.format("%.2f", order.amount)}"
-        Log.d("ViewOrderActivity", "Order displayed. Backend Total: ₹${order.amount}, Calculated Total: ₹$totalCalculatedAmount")
 
-        // Add a check/warning if calculated total doesn't match backend total
-        if (BigDecimal(totalCalculatedAmount).setScale(2, RoundingMode.HALF_UP).toDouble() !=
-            BigDecimal(order.amount).setScale(2, RoundingMode.HALF_UP).toDouble()) {
-            Log.w("ViewOrderActivity", "Calculated total (₹$totalCalculatedAmount) does NOT match backend total (₹${order.amount}). Possible price mismatch or rounding.")
-        }
+        // --- Totals ---
+        val subtotal = totalCalculatedAmount
+        val deliveryCharge = 0.0 // (for now, always 0)
+        val grandTotal = subtotal + deliveryCharge
+
+        subtotalTextView.text = "Subtotal: ₹${String.format("%.2f", subtotal)}"
+        deliveryTextView.text = "Delivery: ₹${String.format("%.2f", deliveryCharge)}"
+        grandTotalTextView.text = "Grand Total: ₹${String.format("%.2f", grandTotal)}"
+
     }
 
     /**
@@ -321,7 +328,7 @@ class ViewOrderActivity : AppCompatActivity() {
             setPadding(0, 16, 0, 0)
         }
         itemsContainerLayout.addView(noOrderTextView)
-        totalPriceTextView.text = "Total: ₹0.00"
+        subtotalTextView.text = "Total: ₹0.00"
         buildingNameTextView.text = "   Order details not available"
         locationNameTextView.text = "   Please check order history"
     }
